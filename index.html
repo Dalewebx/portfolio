@@ -1,470 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>DaleX — Full-Stack Developer & Web3 Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DaleX: Full-Stack Developer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNiIgZmlsbD0iIzBCMTIyMCIvPgogIDxyZWN0IHg9IjE2IiB5PSIxNCIgd2lkdGg9IjkiIGhlaWdodD0iMzYiIHJ4PSIyIiBmaWxsPSIjRDRBRjM3Ii8+CiAgPHBhdGggZD0iTTI1IDE0IEM0MiAxNCA0MiA1MCAyNSA1MCIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgogIDxyZWN0IHg9IjQ1IiB5PSI0MSIgd2lkdGg9IjkiIGhlaWdodD0iOSIgcng9IjEuNSIgZmlsbD0iIzdBNEZDOSIvPgo8L3N2Zz4K">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --bg:#080E1E;
-  --bg2:#0D1528;
-  --bg3:#111C35;
-  --navy:#0D1B3E;
-  --gold:#C9A84C;
-  --gold2:#E8C96A;
-  --gold-dim:rgba(201,168,76,0.15);
-  --gold-border:rgba(201,168,76,0.3);
-  --white:#FFFFFF;
-  --text:#E8EDF5;
-  --muted:#8896B0;
-  --dim:#4A5568;
-  --border:rgba(255,255,255,0.07);
-  --card:#0D1528;
-  --card2:#111C35;
-  --ok:#22C55E;
-  --tag-bg:rgba(201,168,76,0.1);
-}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;}
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-/* ── NOISE TEXTURE ── */
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.4;}
+  :root{
+    --ink:#0B1220;
+    --panel:#151E33;
+    --panel-border:#26324a;
+    --gold:#D4AF37;
+    --violet:#7A4FC9;
+    --bone:#EDEAE0;
+    --slate:#8891A3;
+  }
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(8,14,30,0.85);backdrop-filter:blur(16px);}
-.nav-brand{font-family:'DM Serif Display',serif;font-size:22px;color:var(--gold);letter-spacing:-0.5px;text-decoration:none;}
-.nav-brand span{color:var(--text);}
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.2px;transition:color 0.2s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{background:var(--gold);color:var(--navy);padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
-.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);}
-@media(max-width:600px){.nav-links{display:none;}}
+  *{box-sizing:border-box; margin:0; padding:0;}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 32px 80px;position:relative;overflow:hidden;}
-.hero-glow{position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;}
-.hero-glow2{position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(13,27,62,0.6) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.5px;margin-bottom:28px;}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 6px var(--ok);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(42px,7vw,80px);line-height:1.05;color:var(--white);margin-bottom:24px;letter-spacing:-1px;}
-.hero-title .gold{color:var(--gold);}
-.hero-title .dim{color:var(--muted);}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:40px;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-.btn-primary{background:var(--gold);color:var(--navy);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.25);}
-.btn-outline{border:1.5px solid var(--gold-border);color:var(--gold);padding:13px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-outline:hover{border-color:var(--gold);background:var(--gold-dim);}
-.hero-stats{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
-.stat-item{}
-.stat-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--white);}
-.stat-num span{color:var(--gold);}
-.stat-label{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0.3px;margin-top:2px;}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-/* ── SECTIONS ── */
-section{padding:100px 32px;position:relative;}
-.section-inner{max-width:1100px;margin:0 auto;}
-.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.section-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,48px);color:var(--white);margin-bottom:16px;letter-spacing:-0.5px;}
-.section-sub{font-size:17px;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:64px;}
-.divider{height:1px;background:var(--border);margin:0 32px;}
+  a{color:inherit;}
 
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-@media(max-width:768px){.about-grid{grid-template-columns:1fr;}}
-.about-text p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
-.about-text p strong{color:var(--text);}
-.about-text p .gold{color:var(--gold);}
-.pillars{display:flex;flex-direction:column;gap:16px;}
-.pillar{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;transition:border-color 0.2s;}
-.pillar:hover{border-color:var(--gold-border);}
-.pillar-icon{font-size:22px;margin-bottom:8px;}
-.pillar-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
-.pillar-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
 
-/* ── PROJECTS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(480px,1fr));gap:24px;}
-@media(max-width:560px){.projects-grid{grid-template-columns:1fr;}}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.25s;position:relative;}
-.project-card:hover{border-color:var(--gold-border);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4);}
-.project-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;}
-@media(max-width:800px){.project-card.featured{grid-template-columns:1fr;}}
-.project-accent{height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);}
-.project-body{padding:28px;}
-.project-featured-body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center;}
-.project-featured-visual{background:linear-gradient(135deg,var(--bg3),var(--navy));display:flex;align-items:center;justify-content:center;min-height:260px;position:relative;overflow:hidden;}
-.project-featured-visual::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(201,168,76,0.03) 20px,rgba(201,168,76,0.03) 40px);}
-.pf-icon{font-size:72px;position:relative;z-index:1;}
-.project-type{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.project-name{font-family:'DM Serif Display',serif;font-size:26px;color:var(--white);margin-bottom:8px;line-height:1.2;}
-.project-name-lg{font-family:'DM Serif Display',serif;font-size:34px;color:var(--white);margin-bottom:12px;line-height:1.15;}
-.project-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;}
-.project-desc-lg{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;}
-.project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-.tag{background:var(--tag-bg);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;font-family:'JetBrains Mono',monospace;}
-.tag.dim{background:rgba(255,255,255,0.04);border-color:var(--border);color:var(--muted);}
-.project-links{display:flex;gap:10px;flex-wrap:wrap;}
-.link-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;text-decoration:none;padding:9px 16px;border-radius:8px;transition:all 0.18s;}
-.link-live{background:var(--gold);color:var(--navy);}
-.link-live:hover{background:var(--gold2);}
-.link-ghost{border:1px solid var(--border);color:var(--muted);}
-.link-ghost:hover{border-color:var(--gold-border);color:var(--gold);}
-.project-highlights{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
-.highlight{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);}
-.highlight::before{content:'→';color:var(--gold);font-weight:700;margin-top:1px;flex-shrink:0;}
+  /* ---------- HEADER ---------- */
+  header{
+    padding:26px 0;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:-0.01em;
+    display:inline-flex;
+    align-items:baseline;
+    gap:2px;
+  }
+  .brand .x{color:var(--gold);}
 
-/* ── WEB3 CONTENT ── */
-.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:40px;}
-.content-pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;transition:all 0.2s;}
-.content-pill:hover{border-color:var(--gold-border);}
-.content-pill-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
-.content-pill-cat{font-size:12px;color:var(--muted);}
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:40px 0 70px;
+    border-top:1px solid var(--panel-border);
+    border-bottom:1px solid var(--panel-border);
+  }
 
-/* ── SKILLS ── */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.skill-group{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;}
-.skill-group-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.skill-items{display:flex;flex-wrap:wrap;gap:8px;}
-.skill-item{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:12px;color:var(--text);font-family:'JetBrains Mono',monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
 
-/* ── CERT ── */
-.cert-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:20px;max-width:480px;}
-.cert-icon{font-size:36px;flex-shrink:0;}
-.cert-issuer{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
-.cert-name{font-size:16px;font-weight:700;color:var(--white);margin-bottom:2px;}
-.cert-sub{font-size:13px;color:var(--muted);}
+  .boot-log{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--slate);
+    margin-bottom:26px;
+    min-height:20px;
+  }
+  .boot-log .cursor{
+    display:inline-block;
+    width:7px; height:14px;
+    background:var(--gold);
+    margin-left:2px;
+    animation:blink 1s step-end infinite;
+    vertical-align:middle;
+  }
+  @keyframes blink{50%{opacity:0;}}
 
-/* ── CONTACT ── */
-.contact-section{background:linear-gradient(135deg,var(--bg2),var(--navy));}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
-.contact-links{display:flex;flex-direction:column;gap:12px;}
-.contact-link{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-decoration:none;transition:all 0.2s;}
-.contact-link:hover{border-color:var(--gold-border);background:var(--gold-dim);}
-.contact-link-icon{font-size:20px;width:36px;text-align:center;flex-shrink:0;}
-.contact-link-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:2px;}
-.contact-link-val{font-size:14px;color:var(--text);font-weight:500;}
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(34px, 5vw, 52px);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    max-width:11.5ch;
+    margin-bottom:22px;
+  }
+  h1 .accent{color:var(--gold);}
 
-/* ── FOOTER ── */
-footer{padding:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.footer-brand{font-family:'DM Serif Display',serif;font-size:18px;color:var(--gold);}
-.footer-credit{font-size:13px;color:var(--dim);}
-.footer-links{display:flex;gap:20px;}
-.footer-links a{font-size:13px;color:var(--dim);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--gold);}
+  .lede{
+    font-size:17px;
+    color:var(--slate);
+    max-width:56ch;
+    margin-bottom:34px;
+  }
+
+  .hero-cta{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:12px 20px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold); color:var(--ink); font-weight:600;}
+  .btn-secondary{border:1px solid var(--panel-border); color:var(--bone);}
+
+  /* ---------- SECTION LABELS ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--panel-border);}
+  .section-head{margin-bottom:38px;}
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:26px;
+    font-weight:600;
+  }
+
+  /* ---------- SYSTEM CARDS ---------- */
+  .systems{display:flex; flex-direction:column; gap:16px;}
+
+  .sys-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    padding:22px 24px;
+  }
+
+  .sys-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+  }
+
+  .sys-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .status-dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:#4CD98A;
+    box-shadow:0 0 0 3px rgba(76,217,138,0.15);
+    flex-shrink:0;
+  }
+  .status-dot.review{background:var(--gold); box-shadow:0 0 0 3px rgba(212,175,55,0.15);}
+
+  .sys-status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+
+  .sys-desc{
+    color:var(--slate);
+    font-size:14.5px;
+    margin-bottom:14px;
+    max-width:64ch;
+  }
+
+  .sys-metric{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--bone);
+    background:rgba(212,175,55,0.08);
+    border:1px solid rgba(212,175,55,0.2);
+    padding:4px 10px;
+    border-radius:3px;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--violet);
+    border:1px solid rgba(122,79,201,0.35);
+    padding:3px 9px;
+    border-radius:3px;
+  }
+
+  /* ---------- HOW I WORK ---------- */
+  .principles{display:grid; gap:22px;}
+  .principle{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .principle-mark{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--gold);
+    font-size:13px;
+    padding-top:3px;
+  }
+  .principle h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    margin-bottom:4px;
+  }
+  .principle p{color:var(--slate); font-size:14.5px; max-width:60ch;}
+
+  /* ---------- BACKGROUND ---------- */
+  .bg-text{color:var(--slate); font-size:15px; max-width:64ch;}
+  .bg-text strong{color:var(--bone); font-weight:600;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 80px;}
+  .footer-head{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .footer-sub{color:var(--slate); font-size:14.5px; margin-bottom:26px;}
+  .contact-row{
+    display:flex; gap:20px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .contact-row a{
+    border-bottom:1px solid var(--panel-border);
+    padding-bottom:2px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .contact-row a:hover{border-color:var(--gold); color:var(--gold);}
+
+  @media (max-width:640px){
+    .hero{padding:70px 0 50px;}
+    .principle{grid-template-columns:1fr;}
+    .principle-mark{padding-top:0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{animation:none;}
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="#top">Dale<span>X</span></a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <a class="nav-cta" href="https://wa.me/2349056209920" target="_blank">Let's Work →</a>
-  </div>
-</nav>
+<div class="wrap">
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">Available for projects</div>
-    <h1 class="hero-title">
-      Building things<br>
-      that <span class="gold">actually work.</span>
-    </h1>
-    <p class="hero-sub">Full-stack developer, Web3 builder, and content strategist based in Warri, Nigeria. I build production systems — LMS platforms, Web3 dashboards, community tools — and write about the technology shaping them.</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#projects">See My Work</a>
-      <a class="btn-outline" href="#contact">Get In Touch</a>
+  <header>
+    <div class="brand">Dale<span class="x">X</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Full-Stack Developer · Lagos, Nigeria</div>
+    <div class="boot-log" id="bootLog"></div>
+    <h1>I ship <span class="accent">working systems</span>, not prototypes.</h1>
+    <p class="lede">Mobile apps, backends, and on-chain tooling, built end-to-end and running in production for real institutions and real users. Available for scoped freelance builds.</p>
+    <p style="color:var(--slate); font-size:13.5px; margin-top:-22px; margin-bottom:34px; max-width:56ch;">Also write and run content for Web3 projects, on request, for clients who want a builder who can speak to their audience too.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:dalewebxmarketing@gmail.com">Get in touch</a>
+      <a class="btn btn-secondary" href="#systems">See what I've shipped</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">5<span>,001+</span></div>
-        <div class="stat-label">Songs in the SCCWD Library</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">4<span>k+</span></div>
-        <div class="stat-label">Followers on X (@dalewebx)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3<span>+</span></div>
-        <div class="stat-label">Production systems live</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num"><span>∞</span></div>
-        <div class="stat-label">Modules of Gregorian chant catalogued</div>
-      </div>
+  </section>
+
+  <section id="systems">
+    <div class="section-head">
+      <div class="section-tag">Deployed Systems</div>
+      <h2>Live, in the wild</h2>
     </div>
-  </div>
-</section>
+    <div class="systems">
 
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">About</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm <strong>Daniel Dale Igwebuike</strong> — developer, writer, and Diocesan Choirmaster of the <span class="gold">St. Cecilia Choir Warri Diocese</span>. I go by <strong>DaleX</strong>.</p>
-        <p>I build full-stack web applications with a bias toward things that are <strong>genuinely useful</strong> in the real world — not demos, not templates. Production systems that organisations and communities actually run on.</p>
-        <p>My work sits at an unusual intersection: <strong>institutional technology</strong> for Catholic organisations, <strong>Web3 tools</strong> for on-chain users, and <strong>content strategy</strong> for emerging blockchain protocols. Most developers pick one lane. I've found that crossing them produces better thinking in all three.</p>
-        <p>I'm also the <span class="gold">Delta State Head of ICT</span> for the MATAN Food Bank Foundation, and Planning Committee Chairman for the SCCWD — which means I build systems and then sit in the room where they're used.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-icon">⚙️</div>
-          <div class="pillar-title">Full-Stack Development</div>
-          <div class="pillar-desc">Vanilla JS, HTML/CSS, Supabase, Vercel, Node.js. Production systems built lean and deployed to last.</div>
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot"></span>WallVolt</div>
+          <div class="sys-status">Live · Vercel</div>
         </div>
-        <div class="pillar">
-          <div class="pillar-icon">⛓️</div>
-          <div class="pillar-title">Web3 Building & Content</div>
-          <div class="pillar-desc">On-chain tooling, wallet intelligence, NFT infrastructure, and strategic content for blockchain protocols.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">🎵</div>
-          <div class="pillar-title">Liturgical Music & Technology</div>
-          <div class="pillar-desc">Diocesan Choirmaster with deep expertise in Gregorian chant and Catholic music tradition — building digital infrastructure for the Church.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-label">Work</div>
-    <h2 class="section-title">Projects & Builds</h2>
-    <p class="section-sub">Production systems, tools, and platforms — built from scratch, deployed, and in active use.</p>
-
-    <div class="projects-grid">
-
-      <!-- FEATURED: CMA LMS -->
-      <div class="project-card featured">
-        <div class="project-featured-visual">
-          <div class="pf-icon">🎓</div>
-        </div>
-        <div class="project-featured-body">
-          <div class="project-type">Featured Build — LMS Platform</div>
-          <div class="project-name-lg">Catholic Music Academy LMS</div>
-          <p class="project-desc-lg">A full Learning Management System commissioned by the Catholic Diocese of Warri. Handles the complete student lifecycle: online application with payment receipt upload, admission review, sequential module delivery, MCQ and written assessments, lecturer grading, exam scheduling, and digital certification. Built to production standard with multi-role access, PBKDF2 security, and a zero-dependency vanilla stack.</p>
-          <div class="project-highlights">
-            <div class="highlight">Multi-role admin panel — Master Admin and Lecturer with scoped permissions</div>
-            <div class="highlight">Assessment engine supporting MCQ, written responses, randomised question banks, and per-module pass marks</div>
-            <div class="highlight">Complete email pipeline via Resend — application, admission, grading, completion, examination</div>
-            <div class="highlight">YouTube facade + invisible IFrame audio player for in-module media</div>
-          </div>
-          <div class="project-tags">
-            <span class="tag">Vanilla JS</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">Vercel</span>
-            <span class="tag">Resend</span>
-            <span class="tag dim">PBKDF2</span>
-            <span class="tag dim">PWA-ready</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn link-live" href="https://catholicmusicacademy.net" target="_blank">↗ Live Site</a>
-          </div>
+        <p class="sys-desc">Multi-chain on-chain wallet intelligence dashboard. Solved Alchemy's free-tier block range limit by scanning in chunks across 90,000 blocks. Nothing about the architecture assumed the easy path.</p>
+        <div class="sys-metric">4 live API endpoints: score · risk · approvals · resume</div>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">Alchemy</span><span class="tag">Multi-chain</span><span class="tag">Vercel</span>
         </div>
       </div>
 
-      <!-- SCCWD LIBRARY -->
-      <div class="project-card">
-        <div class="project-accent"></div>
-        <div class="project-body">
-          <div class="project-type">Community Tool</div>
-          <div class="project-name">SCCWD Song Library</div>
-          <p class="project-desc">A searchable digital library of over 5,000 Catholic hymns for the St. Cecilia Choir Warri Diocese. Built as a PWA with offline access, a visual Mass Selections editor for liturgy planning, PDF watermarking, and a scratch-card data giveaway system with automated Peyflex VTU fulfilment.</p>
-          <div class="project-tags">
-            <span class="tag">Vanilla JS</span>
-            <span class="tag">GitHub CMS</span>
-            <span class="tag">PWA</span>
-            <span class="tag dim">pdf-lib</span>
-            <span class="tag dim">Peyflex API</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn link-live" href="https://sccwdlibrary.xyz" target="_blank">↗ Live Site</a>
-          </div>
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot review"></span>Catholic Music Academy</div>
+          <div class="sys-status">App in review · Site live</div>
+        </div>
+        <p class="sys-desc">A learning platform built across two surfaces: a mobile app in review for the Play Store, and its companion web platform, sharing one backend. Enrolment, course progress, push notifications, and certification, kept in parity across both.</p>
+        <div class="sys-metric">Server-side PBKDF2 auth · full push notification pipeline</div>
+        <div class="tags">
+          <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Next.js</span><span class="tag">Supabase</span>
         </div>
       </div>
 
-      <!-- WALLVOLT -->
-      <div class="project-card">
-        <div class="project-accent"></div>
-        <div class="project-body">
-          <div class="project-type">Web3 Tool</div>
-          <div class="project-name">WallVolt</div>
-          <p class="project-desc">A multi-chain on-chain wallet intelligence dashboard. Analyses any Ethereum or EVM wallet for trust score, approval exposure (tokens granted to potentially malicious contracts), suspicious contract flags, smart wallet labels, and generates an on-chain resume from transaction history.</p>
-          <div class="project-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">Alchemy RPC</span>
-            <span class="tag">Vercel API</span>
-            <span class="tag dim">Multi-chain</span>
-            <span class="tag dim">ethers.js</span>
-          </div>
-          <div class="project-links">
-            <a class="link-btn link-live" href="https://wallvolt.vercel.app" target="_blank">↗ Live App</a>
-          </div>
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot"></span>SCCWD Song Library</div>
+          <div class="sys-status">Live · sccwdlibrary.xyz</div>
+        </div>
+        <p class="sys-desc">A private choir song library serving thousands of scores with instant, pixel-sharp rendering, built to feel native even as a web app, with offline support and smart prefetching.</p>
+        <div class="sys-metric">5,000+ songs · static preview pipeline via GitHub Actions</div>
+        <div class="tags">
+          <span class="tag">PDF.js</span><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot"></span>NFT Mint Sniper Bot</div>
+          <div class="sys-status">Live · Telegram</div>
+        </div>
+        <p class="sys-desc">A Telegram bot that watches for and executes NFT mints the moment they go live. Built as a personal tool first, refined into a portfolio-grade demonstration of low-latency on-chain interaction.</p>
+        <div class="sys-metric">Ethereum + Base support</div>
+        <div class="tags">
+          <span class="tag">ethers.js</span><span class="tag">Alchemy</span><span class="tag">Telegram API</span>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
-
-<!-- WEB3 CONTENT -->
-<section>
-  <div class="section-inner">
-    <div class="section-label">Web3 Content</div>
-    <h2 class="section-title">Protocols I've Covered</h2>
-    <p class="section-sub">Strategic content, campaign writing, and community work for blockchain projects across DeFi, NFT infrastructure, and Web3 tooling.</p>
-    <div class="content-grid">
-      <div class="content-pill"><div class="content-pill-name">Wallchain</div><div class="content-pill-cat">MEV / DeFi infrastructure</div></div>
-      <div class="content-pill"><div class="content-pill-name">LabTrade</div><div class="content-pill-cat">On-chain trading</div></div>
-      <div class="content-pill"><div class="content-pill-name">Openledger</div><div class="content-pill-cat">Decentralised data</div></div>
-      <div class="content-pill"><div class="content-pill-name">Beyond</div><div class="content-pill-cat">Web3 gaming</div></div>
-      <div class="content-pill"><div class="content-pill-name">idOS</div><div class="content-pill-cat">Decentralised identity</div></div>
-      <div class="content-pill"><div class="content-pill-name">Quip Network</div><div class="content-pill-cat">Social / community</div></div>
-      <div class="content-pill"><div class="content-pill-name">Rakebit</div><div class="content-pill-cat">DeFi</div></div>
-      <div class="content-pill"><div class="content-pill-name">Duel Duck</div><div class="content-pill-cat">NFT gaming</div></div>
-      <div class="content-pill"><div class="content-pill-name">Remora Markets</div><div class="content-pill-cat">Prediction markets</div></div>
+  <section>
+    <div class="section-head">
+      <div class="section-tag">How I Work</div>
+      <h2>Three rules I don't break</h2>
     </div>
-    <p style="font-size:14px;color:var(--muted);">Content distributed across <strong style="color:var(--text);">X (@dalewebx)</strong>, Kreators World, Tunnl, Yape, Rally, and Wallchain campaign platforms. ~4,000 followers and growing.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-label">Skills & Stack</div>
-    <h2 class="section-title">What I Work With</h2>
-    <p class="section-sub">Tools and technologies across the full stack — from UI to serverless to on-chain.</p>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Frontend</div>
-        <div class="skill-items">
-          <span class="skill-item">HTML5</span><span class="skill-item">CSS3</span><span class="skill-item">Vanilla JS</span><span class="skill-item">PWA</span><span class="skill-item">Service Workers</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Backend & Database</div>
-        <div class="skill-items">
-          <span class="skill-item">Supabase</span><span class="skill-item">Node.js</span><span class="skill-item">PostgreSQL</span><span class="skill-item">Vercel Serverless</span><span class="skill-item">REST APIs</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Web3</div>
-        <div class="skill-items">
-          <span class="skill-item">ethers.js</span><span class="skill-item">Alchemy RPC</span><span class="skill-item">EVM</span><span class="skill-item">Ethereum</span><span class="skill-item">Base</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools & Platforms</div>
-        <div class="skill-items">
-          <span class="skill-item">Vercel</span><span class="skill-item">GitHub</span><span class="skill-item">Resend</span><span class="skill-item">pdf-lib</span><span class="skill-item">YouTube IFrame API</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Security</div>
-        <div class="skill-items">
-          <span class="skill-item">PBKDF2</span><span class="skill-item">Session tokens</span><span class="skill-item">RLS (Supabase)</span><span class="skill-item">CORS</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Content & Strategy</div>
-        <div class="skill-items">
-          <span class="skill-item">Web3 copywriting</span><span class="skill-item">Campaign writing</span><span class="skill-item">Community building</span><span class="skill-item">Technical docs</span>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:40px;">
-      <div class="section-label" style="margin-bottom:16px;">Certification</div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-mark">01</div>
         <div>
-          <div class="cert-issuer">Google</div>
-          <div class="cert-name">Chrome DevTools Badge</div>
-          <div class="cert-sub">Performance profiling, network analysis, debugging</div>
+          <h3>Diagnose before I touch code</h3>
+          <p>I trace a problem to its root before changing anything. A Kotlin compile error that looked like a dozen small bugs turned out to be one dependency. I fix the cause, not the symptom.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-mark">02</div>
+        <div>
+          <h3>Real backends, not mockups</h3>
+          <p>Every project I ship has a working database, real auth, and real API calls behind it from day one, not a UI wired up to fake data that someone else has to rebuild later.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-mark">03</div>
+        <div>
+          <h3>Deploy like it has to work the first time</h3>
+          <p>I keep backups before every deploy and favor simple, predictable code over clever code. A past incident from over-engineered async logic taught me that boring and reliable beats fast and fragile.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div>
-        <div class="section-label">Contact</div>
-        <h2 class="section-title">Let's Build Something.</h2>
-        <p style="font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:0;">Whether it's a full-stack system, a Web3 tool, a content retainer, or something that doesn't fit neatly into a category — reach out. I respond fast and I don't do vague proposals.</p>
-      </div>
-      <div class="contact-links">
-        <a class="contact-link" href="https://wa.me/2349056209920" target="_blank">
-          <div class="contact-link-icon">💬</div>
-          <div>
-            <div class="contact-link-label">WhatsApp</div>
-            <div class="contact-link-val">+234 905 620 9920</div>
-          </div>
-        </a>
-        <a class="contact-link" href="mailto:dalewebxmarketing@gmail.com">
-          <div class="contact-link-icon">✉️</div>
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-val">dalewebxmarketing@gmail.com</div>
-          </div>
-        </a>
-        <a class="contact-link" href="https://x.com/dalewebx" target="_blank">
-          <div class="contact-link-icon">𝕏</div>
-          <div>
-            <div class="contact-link-label">X (Twitter)</div>
-            <div class="contact-link-val">@dalewebx</div>
-          </div>
-        </a>
-        <a class="contact-link" href="mailto:danieligwebuike@gmail.com">
-          <div class="contact-link-icon">📧</div>
-          <div>
-            <div class="contact-link-label">Personal Email</div>
-            <div class="contact-link-val">danieligwebuike@gmail.com</div>
-          </div>
-        </a>
-      </div>
+  <footer>
+    <div class="footer-head">Let's build something.</div>
+    <p class="footer-sub">Open for scoped freelance work: mobile apps, backend systems, and Web3 tooling.</p>
+    <div class="contact-row">
+      <a href="mailto:dalewebxmarketing@gmail.com">dalewebxmarketing@gmail.com</a>
+      <a href="https://x.com/dalewebx" target="_blank">@dalewebx</a>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">DaleX</div>
-  <div class="footer-credit">© 2026 Daniel Dale Igwebuike. All rights reserved.</div>
-  <div class="footer-links">
-    <a href="https://x.com/dalewebx" target="_blank">@dalewebx</a>
-    <a href="https://sccwdlibrary.xyz" target="_blank">SCCWD Library</a>
-    <a href="https://catholicmusicacademy.net" target="_blank">CMA</a>
-  </div>
-</footer>
+</div>
+
+<script>
+  const lines = [
+    "> initializing profile...",
+    "> loading deployed_systems [4 found]",
+    "> status: ready for new builds_"
+  ];
+  const el = document.getElementById('bootLog');
+  let lineIndex = 0, charIndex = 0;
+
+  function typeLine(){
+    if(lineIndex >= lines.length){
+      el.innerHTML = lines[lines.length-1] + '<span class="cursor"></span>';
+      return;
+    }
+    const current = lines[lineIndex];
+    el.textContent = current.slice(0, charIndex);
+    charIndex++;
+    if(charIndex <= current.length){
+      setTimeout(typeLine, 18);
+    } else {
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeLine, 350);
+    }
+  }
+  typeLine();
+</script>
 
 </body>
 </html>

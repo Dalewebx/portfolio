@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Front desk · Palmview Suites (demo)</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16233A">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{background:#F1F3F6}
+  .pin{max-width:340px;margin:12vh auto;background:#fff;border-radius:20px;padding:24px;text-align:center;border:1px solid #E5E7EB}
+  .pin input{text-align:center;font-size:24px;letter-spacing:.4em}
+  .tabs{display:flex;gap:4px;overflow-x:auto;background:#fff;border-bottom:1px solid #E5E7EB;padding:8px 12px;position:sticky;top:60px;z-index:10}
+  .tab{border:0;background:transparent;padding:9px 14px;border-radius:999px;font:600 14px Inter,sans-serif;color:#4B5563;white-space:nowrap;cursor:pointer}
+  .tab.on{background:var(--navy);color:#fff}
+  main{padding:18px 0 60px}
+  .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+  .kpi{background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:14px}
+  .kpi small{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .kpi b{font-size:26px}
+  .card{background:#fff;border:1px solid #E5E7EB;border-radius:14px;margin-top:14px;overflow:hidden}
+  .card h3{font-family:Inter,sans-serif;font-size:15px;padding:12px 14px;border-bottom:1px solid #F0F0F0}
+  .row{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-bottom:1px solid #F5F5F5;align-items:center}
+  .row:last-child{border-bottom:0}
+  .row .who b{display:block}.row .who span{font-size:12.5px;color:var(--muted)}
+  .pill{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .p-confirmed{background:#E0ECFF;color:#1D4ED8}.p-checked_in{background:#E8F6EE;color:#1F8A5B}.p-checked_out{background:#EEE;color:#555}.p-cancelled{background:#FEF3F2;color:#B42318}
+  .mini{min-height:36px;padding:0 12px;font-size:13px}
+  .cal{overflow-x:auto}
+  .cal table{border-collapse:separate;border-spacing:3px;font-size:12px;padding:8px}
+  .cal th{font-weight:600;color:var(--muted);min-width:38px;text-align:center;line-height:1.2}
+  .cal th.today{color:var(--clay)}
+  .cal td{height:34px;min-width:38px;border-radius:7px;background:#F3F4F6;cursor:pointer;text-align:center}
+  .cal td.room{background:transparent;font-weight:700;cursor:default;text-align:left;padding-right:6px;position:sticky;left:0;background:#fff}
+  .cal td.bk{background:#C8643B;color:#fff}
+  .cal td.in{background:#1F8A5B;color:#fff}
+  .cal td.bl{background:repeating-linear-gradient(45deg,#9CA3AF,#9CA3AF 4px,#D1D5DB 4px,#D1D5DB 8px)}
+  .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;padding:0 14px 12px;color:var(--muted)}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+  .price-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #F5F5F5}
+  .price-row .field{max-width:150px}
+  .note{font-size:12.5px;color:var(--muted);padding:10px 14px}
+</style>
+</head>
+<body>
+<div class="demo-bar">Demo admin for a sample hotel. Bookings you make on the demo site appear here on the same phone. <a href="index.html">Back to the hotel site</a></div>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="logo-mark">P</span><span><b>Front desk</b><small>Palmview Suites</small></span></a>
+  <button class="btn btn-ghost mini" id="lock" style="color:#fff;border-color:rgba(255,255,255,.3);display:none">Lock</button>
+</div></header>
+
+<div id="pinView" class="pin">
+  <h2 class="serif" style="font-size:24px">Staff sign in</h2>
+  <p class="meta" style="margin:6px 0 16px">Demo PIN: <b>1234</b></p>
+  <form id="pinForm" class="stack"><input class="field" id="pin" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="PIN"><div id="pinErr"></div><button class="btn btn-navy">Open front desk</button></form>
+</div>
+
+<div id="app" style="display:none">
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-t="today">Today</button><button class="tab" data-t="calendar">Room calendar</button>
+    <button class="tab" data-t="bookings">Bookings</button><button class="tab" data-t="prices">Prices</button>
+  </nav>
+  <main><div class="wrap" id="view"></div></main>
+</div>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Palmview Suites, Effurun · Book your room online</title>
+<meta name="description" content="Demo hotel website by DaleX: check live room availability and book in under a minute.">
+<meta property="og:title" content="Palmview Suites · Book your room online">
+<meta property="og:description" content="A demo hotel site: check which rooms are free and book from your phone. Built by DaleX.">
+<meta name="theme-color" content="#16233A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23C8643B'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Georgia'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-bar">Demo hotel built by DaleX to show what your hotel's site could do. <a href="#want-this">Want this for your hotel?</a></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#"><span class="logo-mark">P</span><span><b>Palmview Suites</b><small>Effurun · Warri</small></span></a>
+  <a class="btn btn-clay" style="min-height:40px;padding:0 16px;font-size:14px" href="#rooms">Book a room</a>
+</div></header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-img" id="heroImg"></div>
+  <div class="wrap">
+    <div class="kicker">Effurun, Delta State</div>
+    <h1>Your room, confirmed before you arrive.</h1>
+    <p>See which rooms are free tonight or any date, and book in under a minute. No calls, no waiting for a reply.</p>
+    <form class="search" id="search">
+      <div><label for="ci">Check-in</label><input class="field" type="date" id="ci" required></div>
+      <div><label for="co">Check-out</label><input class="field" type="date" id="co" required></div>
+      <div class="full"><label for="gs">Guests</label><select class="field" id="gs"><option>1</option><option selected>2</option><option>3</option></select></div>
+      <button class="btn btn-clay full" type="submit">Check availability</button>
+    </form>
+  </div>
+</section>
+
+<section id="rooms"><div class="wrap">
+  <div class="eyebrow">Rooms</div>
+  <h2 class="h2">Choose your room</h2>
+  <p class="lead" id="roomsLead">Prices are per night. Pick your dates above to see what's free.</p>
+  <div class="grid three" id="roomGrid"></div>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+  <div class="eyebrow">At Palmview</div>
+  <h2 class="h2">Everything you need for a good night</h2>
+  <div class="amen">
+    <div><b>24-hour power</b>Generator and inverter backup</div>
+    <div><b>Fast Wi-Fi</b>In every room and the lounge</div>
+    <div><b>Restaurant</b>Local and continental, room service till 11pm</div>
+    <div><b>Secure parking</b>Gated, with CCTV</div>
+    <div><b>Airport pickup</b>From Osubi airport on request</div>
+    <div><b>Laundry</b>Same-day service</div>
+    <div><b>Event hall</b>Up to 120 guests</div>
+    <div><b>Pay your way</b>Card, transfer or at the front desk</div>
+  </div>
+</div></section>
+
+<section class="info"><div class="wrap">
+  <div class="eyebrow" style="color:#F3C9A8">Visit</div>
+  <h2 class="h2">Find us</h2>
+  <div class="info-grid">
+    <div class="info-card"><b>Address</b><span id="addr"></span></div>
+    <div class="info-card"><b>Check-in / out</b><span id="times"></span></div>
+    <div class="info-card"><b>Talk to us</b><a id="waLink" class="btn btn-wa" style="margin-top:8px;min-height:42px" target="_blank" rel="noopener">WhatsApp the front desk</a></div>
+  </div>
+</div></section>
+
+<section id="want-this" style="padding-bottom:10px"><div class="wrap">
+  <div class="pitch">
+    <div class="eyebrow">For hotel owners</div>
+    <h2 class="h2" style="font-size:26px">Want this for your hotel?</h2>
+    <p class="lead" style="margin:0 auto 14px">Your rooms, your prices, your photos. Guests book from their phones, and you manage everything from an admin page. <a href="admin.html" style="color:var(--clay);font-weight:700">See the hotel's admin view</a> (demo PIN 1234).</p>
+    <a class="btn btn-wa" href="https://wa.me/2349056209920?text=Hello%20Dale%2C%20I%20saw%20the%20Palmview%20hotel%20demo%20and%20I%27d%20like%20a%20site%20like%20this%20for%20my%20hotel." target="_blank" rel="noopener">Chat with DaleX on WhatsApp</a>
+  </div>
+</div></section>
+
+<footer>Palmview Suites is a sample hotel for demonstration. Built by <a href="https://dalewebx.vercel.app/" target="_blank" rel="noopener">DaleX</a>.</footer>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"><button class="x" id="closeSheet" aria-label="Close">×</button><div id="sheetBody"></div></div>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

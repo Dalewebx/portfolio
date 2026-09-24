@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DaleX: Full-Stack Developer</title>
+<meta name="description" content="Daniel Dale Igwebuike (DaleX), full-stack developer in Warri, Nigeria. Payments, offline-ready web apps, mobile apps and on-chain tools, built end to end and running in production.">
+<meta property="og:title" content="DaleX: Full-Stack Developer">
+<meta property="og:description" content="Web platforms, mobile apps and on-chain tools, built end to end and running in production. Available for remote and freelance work.">
+<meta property="og:url" content="https://dalewebx.vercel.app/">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNiIgZmlsbD0iIzBCMTIyMCIvPgogIDxyZWN0IHg9IjE2IiB5PSIxNCIgd2lkdGg9IjkiIGhlaWdodD0iMzYiIHJ4PSIyIiBmaWxsPSIjRDRBRjM3Ii8+CiAgPHBhdGggZD0iTTI1IDE0IEM0MiAxNCA0MiA1MCAyNSA1MCIgc3Ryb2tlPSIjRDRBRjM3IiBzdHJva2Utd2lkdGg9IjkiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgogIDxyZWN0IHg9IjQ1IiB5PSI0MSIgd2lkdGg9IjkiIGhlaWdodD0iOSIgcng9IjEuNSIgZmlsbD0iIzdBNEZDOSIvPgo8L3N2Zz4K">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -173,6 +178,9 @@
     flex-shrink:0;
   }
   .status-dot.review{background:var(--gold); box-shadow:0 0 0 3px rgba(212,175,55,0.15);}
+  .status-dot.sold{background:var(--violet); box-shadow:0 0 0 3px rgba(122,79,201,0.2);}
+  .sys-status a{text-decoration:none; border-bottom:1px solid var(--panel-border);}
+  .sys-status a:hover{color:var(--gold); border-color:var(--gold);}
 
   .sys-status{
     font-family:'IBM Plex Mono', monospace;
@@ -277,14 +285,15 @@
   </header>
 
   <section class="hero">
-    <div class="eyebrow">Full-Stack Developer · Lagos, Nigeria</div>
+    <div class="eyebrow">Full-Stack Developer · Warri, Nigeria · Remote</div>
     <div class="boot-log" id="bootLog"></div>
     <h1>I ship <span class="accent">working systems</span>, not prototypes.</h1>
-    <p class="lede">Mobile apps, backends, and on-chain tooling, built end-to-end and running in production for real institutions and real users. Available for scoped freelance builds.</p>
+    <p class="lede">Mobile apps, backends, and on-chain tooling, built end-to-end and running in production for real institutions and real users. Available for remote roles and scoped freelance builds.</p>
     <p style="color:var(--slate); font-size:13.5px; margin-top:-22px; margin-bottom:34px; max-width:56ch;">Also write and run content for Web3 projects, on request, for clients who want a builder who can speak to their audience too.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:dalewebxmarketing@gmail.com">Get in touch</a>
+      <a class="btn btn-primary" href="mailto:danieligwebuike@gmail.com">Get in touch</a>
       <a class="btn btn-secondary" href="#systems">See what I've shipped</a>
+      <a class="btn btn-secondary" href="Daniel-Dale-Igwebuike-CV.pdf" download>Download CV</a>
     </div>
   </section>
 
@@ -297,10 +306,46 @@
 
       <div class="sys-card">
         <div class="sys-top">
-          <div class="sys-name"><span class="status-dot"></span>WallVolt</div>
-          <div class="sys-status">Live · Vercel</div>
+          <div class="sys-name"><span class="status-dot"></span>Event Ticketing &amp; Door Check-in</div>
+          <div class="sys-status">Live · <a href="https://sccwdwarri.online" target="_blank" rel="noopener">sccwdwarri.online</a></div>
         </div>
-        <p class="sys-desc">Multi-chain on-chain wallet intelligence dashboard. Solved Alchemy's free-tier block range limit by scanning in chunks across 90,000 blocks. Nothing about the architecture assumed the easy path.</p>
+        <p class="sys-desc">Ticketing for a 200-seat regional gala night: Paystack checkout verified on the server, a named QR ticket for every guest, and VIP tables of four. Ushers scan at the door with an offline-first app that keeps working with no signal, syncs when it returns, and catches the same ticket scanned on two phones.</p>
+        <div class="sys-metric">Paystack webhooks · offline QR scanner · server-rendered tickets</div>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Edge Functions</span><span class="tag">Paystack</span>
+        </div>
+      </div>
+
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot review"></span>Music Academy: LMS + Android App</div>
+          <div class="sys-status">Site live · App in Play testing · <a href="https://catholicmusicacademy.net" target="_blank" rel="noopener">site</a></div>
+        </div>
+        <p class="sys-desc">A learning platform on two surfaces sharing one backend: a web LMS and a React Native app in Google Play testing. Sequential modules, reading gates, randomised question pools, grading, and an admin course builder, kept in parity across both.</p>
+        <div class="sys-metric">Server-side PBKDF2 auth · web and mobile on one backend</div>
+        <div class="tags">
+          <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Supabase</span><span class="tag">Vercel</span>
+        </div>
+      </div>
+
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot"></span>Sheet-Music Library</div>
+          <div class="sys-status">Live · <a href="https://sccwdlibrary.xyz" target="_blank" rel="noopener">sccwdlibrary.xyz</a></div>
+        </div>
+        <p class="sys-desc">A PWA serving thousands of scores to choirs across a region, with instant, pixel-sharp rendering that feels native, offline support and smart prefetching. It replaced a WhatsApp group where requests for copies buried every announcement.</p>
+        <div class="sys-metric">5,000+ scores · 300-DPI preview pipeline via GitHub Actions</div>
+        <div class="tags">
+          <span class="tag">PDF.js</span><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="sys-card">
+        <div class="sys-top">
+          <div class="sys-name"><span class="status-dot sold"></span>WallVolt</div>
+          <div class="sys-status">Built and sold</div>
+        </div>
+        <p class="sys-desc">Multi-chain wallet intelligence dashboard. Solved Alchemy's free-tier block range limit by scanning in chunks across 90,000 blocks. Built as my own product, then sold to a buyer.</p>
         <div class="sys-metric">4 live API endpoints: score · risk · approvals · resume</div>
         <div class="tags">
           <span class="tag">Node.js</span><span class="tag">Alchemy</span><span class="tag">Multi-chain</span><span class="tag">Vercel</span>
@@ -309,25 +354,25 @@
 
       <div class="sys-card">
         <div class="sys-top">
-          <div class="sys-name"><span class="status-dot review"></span>Catholic Music Academy</div>
-          <div class="sys-status">App in review · Site live</div>
+          <div class="sys-name"><span class="status-dot"></span>Fundraising &amp; Finance Ledger</div>
+          <div class="sys-status">Live · <a href="https://scharvest.online" target="_blank" rel="noopener">scharvest.online</a></div>
         </div>
-        <p class="sys-desc">A learning platform built across two surfaces: a mobile app in review for the Play Store, and its companion web platform, sharing one backend. Enrolment, course progress, push notifications, and certification, kept in parity across both.</p>
-        <div class="sys-metric">Server-side PBKDF2 auth · full push notification pipeline</div>
+        <p class="sys-desc">A ledger for a community finance committee: income, expenditure and pledges across two bank accounts, with three admin accounts, batched saves and a two-tap confirm so money is never recorded by accident.</p>
+        <div class="sys-metric">Real money, three admins, zero spreadsheets</div>
         <div class="tags">
-          <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Next.js</span><span class="tag">Supabase</span>
+          <span class="tag">Supabase</span><span class="tag">JavaScript</span><span class="tag">PWA</span>
         </div>
       </div>
 
       <div class="sys-card">
         <div class="sys-top">
-          <div class="sys-name"><span class="status-dot"></span>SCCWD Song Library</div>
-          <div class="sys-status">Live · sccwdlibrary.xyz</div>
+          <div class="sys-name"><span class="status-dot"></span>DHE: Salon Booking &amp; Catalogue</div>
+          <div class="sys-status">Client project · <a href="https://dhe-site-eta.vercel.app/" target="_blank" rel="noopener">site</a></div>
         </div>
-        <p class="sys-desc">A private choir song library serving thousands of scores with instant, pixel-sharp rendering, built to feel native even as a web app, with offline support and smart prefetching.</p>
-        <div class="sys-metric">5,000+ songs · static preview pipeline via GitHub Actions</div>
+        <p class="sys-desc">A hair stylist's booking platform and tools catalogue. The booking engine lives in Postgres: availability ranges, buffer times, client records and status history kept by triggers, with email alerts on every new booking and a mobile-first admin panel.</p>
+        <div class="sys-metric">Booking rules enforced in the database, not the browser</div>
         <div class="tags">
-          <span class="tag">PDF.js</span><span class="tag">PWA</span><span class="tag">IndexedDB</span><span class="tag">GitHub Actions</span>
+          <span class="tag">Supabase</span><span class="tag">PL/pgSQL</span><span class="tag">JavaScript</span><span class="tag">Resend</span>
         </div>
       </div>
 
@@ -378,10 +423,12 @@
 
   <footer>
     <div class="footer-head">Let's build something.</div>
-    <p class="footer-sub">Open for scoped freelance work: mobile apps, backend systems, and Web3 tooling.</p>
+    <p class="footer-sub">Open to remote roles and scoped freelance work: web platforms, mobile apps, backend systems and Web3 tooling.</p>
     <div class="contact-row">
-      <a href="mailto:dalewebxmarketing@gmail.com">dalewebxmarketing@gmail.com</a>
-      <a href="https://x.com/dalewebx" target="_blank">@dalewebx</a>
+      <a href="mailto:danieligwebuike@gmail.com">danieligwebuike@gmail.com</a>
+      <a href="https://wa.me/2349056209920" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://x.com/dalewebx" target="_blank" rel="noopener">@dalewebx</a>
+      <a href="Daniel-Dale-Igwebuike-CV.pdf" download>CV (PDF)</a>
     </div>
   </footer>
 
@@ -390,7 +437,7 @@
 <script>
   const lines = [
     "> initializing profile...",
-    "> loading deployed_systems [4 found]",
+    "> loading deployed_systems [7 found]",
     "> status: ready for new builds_"
   ];
   const el = document.getElementById('bootLog');
